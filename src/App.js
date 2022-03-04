@@ -13,16 +13,15 @@ function App() {
 
         <Box
         sx={{
-        width: 400,
+        width: 600,
         height: 500,
         backgroundColor: 'primary.dark',
         border: 'dotted 1px',
         borderRadius: 2, 
         marginBottom:3,
       }}>
-        <Input placeholder='Functionality to be added'>
-        <Icon />
-        Text</Input>
+        <Input placeholder='Functionality to be added' onSubmit={()=>alert('submitted')}/>
+
 <ol style={{'textAlign':'left', fontSize:20, textTransform:'capitalize'}}>
         <ToDoList number={10} />
         </ol>
