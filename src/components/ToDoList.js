@@ -4,6 +4,7 @@ import { useState } from "react";
 //import DeleteIcon from '@mui/icons-material/Delete';
 import { Delete, ModeEditRounded } from "@mui/icons-material";
 import { Checkbox, Divider } from "@mui/material";
+import SearchBar from "./SearchBar";
 
    
 
@@ -20,7 +21,14 @@ function ToDoList(props) {
     axios.get('https://jsonplaceholder.typicode.com/todos/')
     .then((resp)=>{
       let todos = resp.data.filter((ea)=> ea.id< props.number);
-      todos = todos.map((el) => 
+      setToDoList(todos);
+    })
+    .catch(err=>console.log(err));
+  }
+
+  const renderToDoList = (myList) => {
+    if (myList){
+    return myList.map((el) => 
      
         <li key={el.id}>
           <Checkbox style={{color:'white'}} onChange={(e)=> console.log(`List item ${el.id} is ${e.target.checked ? "checked": "unchecked"}` )}/>
@@ -29,18 +37,13 @@ function ToDoList(props) {
         <Delete onClick={()=>alert('Delete functionality')}/>
         <Divider/>
         </li>  
-        
-      
-      )
-      setToDoList(todos);
-    })
-    .catch(err=>console.log(err));
+      ) 
+    }
   }
-
   
   return (
     <div>
-       {toDoList}
+      <SearchBar toDoList={toDoList} setToDoList={setToDoList} renderToDoList={renderToDoList}/>
     </div>
   )
 }

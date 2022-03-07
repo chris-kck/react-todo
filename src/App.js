@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import { Box, Icon, Input } from '@mui/material';
 import ToDoList from 'components/ToDoList';
+import SearchBar from 'components/SearchBar';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         marginBottom:3,
       }}>
         <Input placeholder='Functionality to be added' onSubmit={()=>alert('submitted')}/>
-
+        
 <ol style={{'textAlign':'left', fontSize:20, textTransform:'capitalize'}}>
         <ToDoList number={10} />
         </ol>
