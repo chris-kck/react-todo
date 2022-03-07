@@ -26,6 +26,14 @@ function ToDoList(props) {
     .catch(err=>console.log(err));
   }
 
+  const handleDelete = (id, e) =>{
+    //Localstorage delete item.
+    setToDoList(
+      toDoList.filter((item)=> item.id!=id)
+    )
+
+  }
+
   const renderToDoList = (myList) => {
     if (myList){
     return myList.map((el) => 
@@ -34,7 +42,7 @@ function ToDoList(props) {
           <Checkbox style={{color:'white'}} onChange={(e)=> console.log(`List item ${el.id} is ${e.target.checked ? "checked": "unchecked"}` )}/>
           {el.title} 
         <ModeEditRounded onClick={()=>alert('Edit functionality')}/>
-        <Delete onClick={()=>alert('Delete functionality')}/>
+        <Delete onClick={(e)=>handleDelete(el.id , e)}/>
         <Divider/>
         </li>  
       ) 
